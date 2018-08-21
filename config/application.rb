@@ -19,6 +19,11 @@ Bundler.require(*Rails.groups)
 
 module ShelfList
   class Application < Rails::Application
+
+    config.action_dispatch.rescue_responses.merge!(
+    'AuthorizationException' => :unauthorized
+    )
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
